@@ -1,0 +1,1 @@
+SELECT Apellido FROM dbo.Clientes INNER JOIN Contratos ON Clientes.DNI = Contratos.DNI;
