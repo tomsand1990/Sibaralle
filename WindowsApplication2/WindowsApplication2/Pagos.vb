@@ -297,20 +297,25 @@ Public Class Pagos
         OtrosDataGrid.DataSource = dTable7
     End Sub
 
+    Private Sub PagoTextBox_KeyPressed(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles PagoTextBox.KeyPress
+        If Char.IsDigit(e.KeyChar) = False And Char.IsControl(e.KeyChar) = False Then
+            e.Handled = True
+        End If
+    End Sub
     Private Sub PagoTextBox_TextChanged(sender As Object, e As EventArgs) Handles PagoTextBox.TextChanged
         Dim objQRCode As QRCodeEncoder = New QRCodeEncoder()
         Dim imgImage As Image
         Dim objBitmap As Bitmap
 
-        objQRCode.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE
-        objQRCode.QRCodeScale = 2
-        objQRCode.QRCodeVersion = 5
-        objQRCode.QRCodeErrorCorrect = ThoughtWorks.QRCode.Codec.QRCodeEncoder.ERROR_CORRECTION.L
-        imgImage = objQRCode.Encode(ApellidoCombo.SelectedItem(0) + ", " + ApellidoCombo.SelectedItem(1) + "," + DireccionCombo.SelectedItem(0) + "," + PagoTextBox.Text + ",Total" + TotalLabel.Text + ",Fecha" + Fechalabel.Text)
-        objBitmap = New Bitmap(imgImage)
-        objBitmap.Save("QRCode.jpg")
+        'objQRCode.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE
+        'objQRCode.QRCodeScale = 2
+        'objQRCode.QRCodeVersion = 5
+        'objQRCode.QRCodeErrorCorrect = ThoughtWorks.QRCode.Codec.QRCodeEncoder.ERROR_CORRECTION.L
+        'imgImage = objQRCode.Encode(ApellidoCombo.SelectedItem(0) + ", " + ApellidoCombo.SelectedItem(1) + "," + DireccionCombo.SelectedItem(0) + "," + PagoTextBox.Text + ",Total" + TotalLabel.Text + ",Fecha" + Fechalabel.Text)
+        'objBitmap = New Bitmap(imgImage)
+        'objBitmap.Save("QRCode.jpg")
 
-        PictureBox1.ImageLocation = "QRCode.jpg"
+        'PictureBox1.ImageLocation = "QRCode.jpg"
 
     End Sub
 
